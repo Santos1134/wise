@@ -71,7 +71,7 @@ nav a.active {
 
 /* Hero */
 .hero {
-  background: url('3.jpg') center/cover no-repeat;
+  background: url('images/3.jpg') center/cover no-repeat;
   color: white;
   padding: 6rem 1rem;
   text-align: center;
@@ -235,3 +235,10 @@ form button:hover {
 card.img{
     width: 60px;
 }
+.quick-links a {
+  text-decoration: none;  /* removes underline */
+  color: #fff;            /* or any color that fits your theme */
+  transition: color 0.3s ease;
+}
+
+
