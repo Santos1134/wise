@@ -891,3 +891,42 @@ form button:hover {
     font-size: 1.5rem;
   }
 }
+
+/* Custom Notification */
+.custom-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.3s ease;
+  max-width: 400px;
+  word-wrap: break-word;
+}
+
+.custom-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.custom-notification.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.custom-notification.error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+@media (max-width: 768px) {
+  .custom-notification {
+    right: 10px;
+    left: 10px;
+    max-width: calc(100% - 20px);
+  }
+}

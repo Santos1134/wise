@@ -58,6 +58,78 @@ document.addEventListener('DOMContentLoaded', () => {
         bioText.classList.add('expanded');
         this.textContent = 'See Less';
       }
+   
+
+
     });
   });
+
+  // Contact form handling - clear form after submission
+  const contactForm = document.querySelector('form[action*="web3forms.com"]');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          // Clear the form fields after successful submission
+          this.reset();
+          showNotification('Message sent successfully! We will get back to you soon.', 'success');
+        } else {
+          showNotification('There was an error sending your message. Please try again.', 'error');
+        }
+      } catch (error) {
+        showNotification('There was an error sending your message. Please try again.', 'error');
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  }
+
+  // Function to show custom notification
+  function showNotification(message, type) {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.custom-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `custom-notification ${type}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    // Show notification with animation
+    setTimeout(() => {
+      notification.classList.add('show');
+    }, 100);
+
+    // Remove notification after 4 seconds
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, 4000);
+  }
 });
