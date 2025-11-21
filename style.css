@@ -898,10 +898,12 @@ form button:hover {
   top: 20px;
   right: 20px;
   padding: 1rem 1.5rem;
+  padding-left: 3rem;
   border-radius: 8px;
-  color: white;
+  background: white;
+  color: #2c3e50;
   font-weight: 500;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 10000;
   opacity: 0;
   transform: translateX(400px);
@@ -910,16 +912,26 @@ form button:hover {
   word-wrap: break-word;
 }
 
+.custom-notification::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  border-radius: 8px 0 0 8px;
+}
+
 .custom-notification.show {
   opacity: 1;
   transform: translateX(0);
 }
 
-.custom-notification.success {
+.custom-notification.success::before {
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
 }
 
-.custom-notification.error {
+.custom-notification.error::before {
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
