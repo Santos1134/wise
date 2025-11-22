@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       image: 'images/1763767215079.jpg',
-      title: 'Skills Development',
-      description: 'Practical training and mentorship'
+      title: 'certification Ceremony',
+      description: 'Student Success Peters receiving her certificate'
     },
     {
       image: 'images/1763767383580.jpg',
